@@ -10,7 +10,7 @@ body {
 
 .container {
     display: grid;
-    grid-template: 200px 1fr / 275px 1fr;
+    grid-template: 175px 1fr / 275px 1fr;
     min-height: 100vh;
 }
 
@@ -115,7 +115,7 @@ body {
     height: 100%;
 }
 
-.search-button:hover, .notification-button:hover {
+.search-button:hover, .notification-button:hover, .action-buttons button:hover {
     cursor: pointer;
 }
 
@@ -142,7 +142,8 @@ body {
     align-items: center;
 }
 
-.profile-picture {
+.profile-picture-small {
+    height: 30px;
     border-radius: 100%;
 }
 
@@ -155,4 +156,66 @@ body {
 
 .profile div {
     font-weight: bold;
+}
+
+.bottom-header-section {
+    display: grid;
+    grid-template-columns: 300px 1fr 365px;
+
+    margin: 25px 30px;
+
+    align-items: center;
+    grid-template-areas: "profile . buttons";
+}
+
+.profile-card {
+    grid-area: profile;
+
+    display: grid;
+    grid-template-rows: 40px 30px;
+    grid-template-columns: 75px 1fr;
+    column-gap: 15px;
+    row-gap: 5px;
+
+    grid-template-areas: "profile-picture name" "profile-picture tag";
+}
+
+.profile-picture {
+    grid-area: profile-picture;
+
+    height: 75px;
+    border-radius: 100%;
+}
+
+.profile-card > div:nth-child(2) {
+    grid-area: name;
+    font-size: 25px;
+
+    align-self: self-end;
+}
+
+.profile-card > div:last-child {
+    grid-area: tag;
+    align-self: baseline;
+    font-size: 14px;
+}
+
+.action-buttons {
+    grid-area: buttons;
+
+    display: grid;
+    grid-template-columns: repeat(3, 110px);
+    gap: 15px;
+    align-items: center;
+}
+
+.action-buttons button {
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    
+    padding: 10px;
+    border: none;
+    background-color: #a7f3d0;
+    border-radius: 25px;
 }
