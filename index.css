@@ -1,6 +1,36 @@
+:root {
+    --project-action-button-size: 32px;
+    --bg-color: #a7f3d0;
+}
+
 @font-face {
     font-family: 'Roboto';
-    src: url('fonts/Roboto/Roboto-Regular.ttf');
+    src: url('fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto/Roboto-Thin.ttf') format('truetype');
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('fonts/Roboto/Roboto-Black.ttf') format('truetype');
+    font-weight: 900;
 }
 
 body {
@@ -39,7 +69,7 @@ body {
 
 .nav-bar {
     grid-row: 1 / span 2;
-    background-color: #a7f3d0;
+    background-color: var(--bg-color);
     padding: 25px;
     color: black;
 }
@@ -104,7 +134,11 @@ body {
     gap: 15px;
 }
 
-.search-button, .notification-button {
+.search-button, 
+.notification-button, 
+.favorite-button, 
+.watch-button, 
+.fork-button {
     background-color: transparent;
     border: none;
     margin: none;
@@ -117,7 +151,9 @@ body {
     height: 100%;
 }
 
-.search-button:hover, .notification-button:hover, .action-buttons button:hover {
+.search-button:hover, 
+.notification-button:hover, 
+.action-buttons button:hover {
     cursor: pointer;
 }
 
@@ -170,21 +206,22 @@ body {
     grid-template-areas: "profile . buttons";
 }
 
+
 .profile-card {
     grid-area: profile;
-
+    
     display: grid;
     grid-template-rows: 40px 30px;
     grid-template-columns: 75px 1fr;
     column-gap: 15px;
     row-gap: 5px;
-
+    
     grid-template-areas: "profile-picture name" "profile-picture tag";
 }
 
 .profile-picture {
     grid-area: profile-picture;
-
+    
     height: 75px;
     border-radius: 100%;
 }
@@ -192,7 +229,7 @@ body {
 .profile-card > div:nth-child(2) {
     grid-area: name;
     font-size: 25px;
-
+    
     align-self: self-end;
 }
 
@@ -204,42 +241,117 @@ body {
 
 .action-buttons {
     grid-area: buttons;
-
+    
     display: grid;
     grid-template-columns: repeat(3, 110px);
     gap: 15px;
     align-items: center;
 }
 
-.action-buttons button {
+.action-buttons button  {
     width: 100%;
     font-size: 16px;
     font-weight: bold;
     
     padding: 10px;
     border: none;
-    background-color: #a7f3d0;
+    background-color: var(--bg-color);
     border-radius: 25px;
 }
 
-.project-section {
+.content-section {
+    padding: 25px 20px;
+
     display: grid;
-    
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+}
+
+.user-project-container {
+    display: grid;    
+    grid-template-columns: repeat(auto-fill, clamp(400px, 45%, 550px));
+    gap: 25px;
+}
+
+.section-header {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 500;
 }
 
 .project-card {   
-    margin: 30px;
-    padding: 10px;
+    padding: 25px;
     
-    height: 200px;
-    width: 400px;
     background-color: white;
 
     border: solid 0px;
-    border-left: solid gold 8px;
+    border-left: solid gold 9px;
     border-radius: 10px;
 
-
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 4fr var(--project-action-button-size);
+    gap: 13px;
+}
+
+.project-card-header {
+    font-size: 20px;
+    font-weight: 500;
+    align-self: self-end;
+}
+
+.project-card-content {
+    color: grey;
+    font-size: 13px;
+}
+
+.project-card-actions {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, var(--project-action-button-size));
+    grid-template-areas: ". favorite-button watch-button fork-button";
+
+    gap: 5px;
+}
+
+.project-card-actions > button {
+    height: var(--project-action-button-size);
+    width: var(--project-action-button-size);
+}
+
+.favorite-button {
+    grid-area: favorite-button;
+}
+
+.watch-button {
+    grid-area: watch-button;
+}
+
+.fork-button {
+    grid-area: fork-button;
+}
+
+.announcement-card {
+    display: grid;
+    gap: 5px;
+    padding: 10px 0px;
+}
+
+.announcement-card-header {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.announcement-card-content {
+    font-size: 11px;
+    color: gray;
+}
+
+.announcement-container {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    padding: 10px 20px;
+
+}
+
+.announcement-card:not(:last-of-type) {
+    border-bottom: solid 1px gray;
 }
