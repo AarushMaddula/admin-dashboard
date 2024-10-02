@@ -6,6 +6,7 @@
 body {
     margin: 0px;
     font-family: 'Roboto';
+    background-color: rgb(238, 238, 238);
 }
 
 .container {
@@ -78,6 +79,7 @@ body {
 .header {
     grid-column: 2 / 3;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    background-color: white;
 }
 
 .top-header-section {
@@ -218,4 +220,26 @@ body {
     border: none;
     background-color: #a7f3d0;
     border-radius: 25px;
+}
+
+.project-section {
+    display: grid;
+    
+}
+
+.project-card {   
+    margin: 30px;
+    padding: 10px;
+    
+    height: 200px;
+    width: 400px;
+    background-color: white;
+
+    border: solid 0px;
+    border-left: solid gold 8px;
+    border-radius: 10px;
+
+
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
 }
